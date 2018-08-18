@@ -3,7 +3,7 @@ import {BaseModel} from './BaseModel';
 export class PortfolioModel extends BaseModel {
   constructor(portfolioData) {
     super();
-    
+
     this.locale = portfolioData.locale;
     this.fullName = portfolioData.fullName;
     this.email = portfolioData.email;

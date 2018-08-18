@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 module.exports = {
   /*
   ** Headers of the page
@@ -23,6 +21,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    watch: ['services'],
     /*
     ** Run ESLint on save
     */
@@ -36,6 +35,8 @@ module.exports = {
         })
       }
     }
-  }
-}
-
+  },
+  modules: [
+    '@nuxtjs/dotenv',
+  ]
+};

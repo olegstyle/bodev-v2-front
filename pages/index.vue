@@ -24,6 +24,9 @@
 
 <script>
 import AppLogo from '~/components/AppLogo.vue'
+import config from '~/services/config';
+
+console.log(config.api.url);
 
 export default {
   components: {
@@ -62,4 +65,3 @@ export default {
   padding-top: 15px;
 }
 </style>
-

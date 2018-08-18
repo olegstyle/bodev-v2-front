@@ -1,4 +1,4 @@
-import BaseModel from './BaseModel';
+import {BaseModel} from './BaseModel';
 
 export class StackModel extends BaseModel {
   constructor(stack) {

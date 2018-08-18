@@ -15,10 +15,10 @@ export class ApiService {
    * @param {ContactModel} model
    * @return {Promise<StatusModel>}
    */
-  async sendContactForm(model) {
+  static async sendContactForm(model) {
     try {
       return new StatusModel(
-        await axios.post('contact/send', model.toBaseObject()));
+        (await axios.post('contact/send', model.toBaseObject())).data);
     } catch (e) {
       console.error(e);
     }
@@ -27,9 +27,9 @@ export class ApiService {
   /**
    * @return {Promise<ProjectsModel>}
    */
-  async getProjects() {
+  static async getProjects() {
     try {
-      return new ProjectsModel(await axios.get('projects'));
+      return new ProjectsModel((await axios.get('projects')).data);
     } catch (e) {
       console.error(e);
     }
@@ -38,9 +38,9 @@ export class ApiService {
   /**
    * @return {Promise<PortfolioModel>}
    */
-  async getPortfolioData() {
+  static async getPortfolioData() {
     try {
-      return new PortfolioModel(await axios.get('getData'));
+      return new PortfolioModel((await axios.get('getData')).data);
     } catch (e) {
       console.error(e);
     }
@@ -49,9 +49,9 @@ export class ApiService {
   /**
    * @return {Promise<TechGroupsModel>}
    */
-  async getTechGroups() {
+  static async getTechGroups() {
     try {
-      return new TechGroupsModel(await axios.get('techGroups'));
+      return new TechGroupsModel((await axios.get('techGroups')).data);
     } catch (e) {
       console.error(e);
     }
@@ -60,9 +60,9 @@ export class ApiService {
   /**
    * @return {Promise<TechGroupsModel>}
    */
-  async getTechStacks() {
+  static async getTechStacks() {
     try {
-      return new TechStacksModel(await axios.get('techStacks'));
+      return new TechStacksModel((await axios.get('techStacks')).data);
     } catch (e) {
       console.error(e);
     }

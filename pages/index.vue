@@ -24,9 +24,6 @@
 
 <script>
 import AppLogo from '~/components/AppLogo.vue'
-import config from '~/app/config';
-
-console.log(config.api.url);
 
 export default {
   components: {

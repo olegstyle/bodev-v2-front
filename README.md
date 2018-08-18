@@ -1,4 +1,4 @@
-# bodev_v2_front
+# BOdev Frontend V2
 
 > BOdev Porfolio on Nuxt.js
 

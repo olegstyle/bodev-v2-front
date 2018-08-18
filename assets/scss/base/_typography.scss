@@ -1,0 +1,18 @@
+$font-size: 11 12 13 14 16 18 21 24 48;
+
+@each $size in $font-size {
+  .font-size {
+    &--#{$size} {
+      font-size: #{$size}px;
+    }
+  }
+}
+
+.font-weight--medium {
+  font-weight: 500 !important;
+}
+
+.font-weight--bold {
+  font-weight: 700 !important;
+}
+

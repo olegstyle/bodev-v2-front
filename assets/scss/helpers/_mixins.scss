@@ -2,3 +2,36 @@
   background-color: $color !important;
   border-color: $color !important;
 }
+
+@mixin skewY($deg) {
+  -moz-transform: skewY($deg); /* Для Firefox */
+  -ms-transform: skewY($deg); /* Для IE */
+  -webkit-transform: skewY($deg); /* Для Safari, Chrome, iOS */
+  -o-transform: skewY($deg); /* Для Opera */
+  transform: skewY($deg);
+}
+
+@mixin horizontal-gradient($from, $to, $start: 0%, $stop: 100%) {
+  /* fallback/image non-cover color */
+  background-color: $from;
+  /* Firefox 3.6+ */
+  background-image: -moz-linear-gradient(left, $from $start, $to $stop);
+  /* Safari 4+, Chrome 1+ */
+  background-image: -webkit-gradient(linear, left top, right top, color-stop($start, $from), color-stop($stop, $to));
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -webkit-linear-gradient(left, $from $start, $to $stop);
+  /* Opera 11.10+ */
+  background-image: -o-linear-gradient(left, $from $start, $to $stop);
+  /* IE10+ */
+  background: -ms-linear-gradient(left, $from $start, $to $stop);
+  /* Standard */
+  background: linear-gradient(to right, $from $start, $to $stop);
+  /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$from', endColorstr='$to', GradientType=1);
+}
+
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}

@@ -8,7 +8,7 @@ const path = require('path');
 
 module.exports = {
   resolve: {
-    extensions: ['.js', '.json', '.vue', '.png', '.jpg', '.svg'],
+    extensions: ['.js', '.json', '.vue', '.png', '.jpg', '.svg', 'scss'],
     alias: {
       '~': path.resolve(__dirname, './'),
     },

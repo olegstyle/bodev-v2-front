@@ -1,0 +1,8 @@
+@import "helpers/mixins";
+@import "helpers/variables";
+/* layouts */
+@import "layouts/main";
+
+html, body, #__nuxt, #__layout {
+  height: 100%;
+}

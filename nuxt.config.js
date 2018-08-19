@@ -18,7 +18,7 @@ module.exports = {
   */
   loading: { color: '#3B8070' },
   css: [
-    '~/assets/scss/main.scss',
+    '~/assets/scss/app.scss',
   ],
   /*
   ** Build configuration
@@ -40,6 +40,7 @@ module.exports = {
     }
   },
   modules: [
+    'bootstrap-vue/nuxt',
     '@nuxtjs/dotenv',
   ]
 };

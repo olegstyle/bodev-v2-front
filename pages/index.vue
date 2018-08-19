@@ -3,7 +3,7 @@
     <div>
       <app-logo/>
       <h1 class="title">
-        bodev_v2_front
+        bodev V2 Frontend
       </h1>
       <h2 class="subtitle">
         BOdev Porfolio on Nuxt.js
@@ -34,11 +34,11 @@ export default {
 
 <style>
 .container {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-top: 5px;
 }
 
 .title {

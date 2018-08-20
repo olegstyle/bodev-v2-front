@@ -1,6 +1,9 @@
 html, body, #__nuxt, #__layout {
   height: 100%;
 }
+* {
+  transition: all 0.5s ease-in;
+}
 
 @import "helpers/mixins";
 @import "helpers/variables";

@@ -40,6 +40,12 @@
     left: -40px;
     width: 80px;
     height: 35px;
+
+    &.hidden {
+      left: 0;
+      top: 30px;
+      width: 10px;
+    }
   }
 
   .line-position-left-top {
@@ -48,6 +54,10 @@
     left: 150px;
     width: 145px;
     height: 55px;
+
+    &.hidden {
+      width: 0;
+    }
   }
 
   .line-position-right-top {
@@ -56,6 +66,12 @@
     right: 100px;
     width: 145px;
     height: 30px;
+
+    &.hidden {
+      top: 0;
+      right: 205px;
+      width: 0;
+    }
   }
 
   .line-position-right {
@@ -64,6 +80,10 @@
     right: -30px;
     width: 180px;
     height: 55px;
+
+    &.hidden {
+      right: 0;
+    }
   }
 
   .line-position-right-bottom {
@@ -72,6 +92,11 @@
     right: -20px;
     width: 180px;
     height: 55px;
+
+    &.hidden {
+      bottom: 200px;
+      right: -400px;
+    }
   }
 
   .line-position-left-bottom {
@@ -80,6 +105,11 @@
     left: 50px;
     width: 180px;
     height: 35px;
+
+    &.hidden {
+      bottom: 55px;
+      left: 150px;
+    }
   }
 }
 

@@ -73,4 +73,11 @@ export namespace ApiTypes {
     updated_at?: string;
     group_id?: number;
   }
+
+  type StateD = {
+    portfolioData: ApiTypes.PortfolioD | null;
+    projects: ApiTypes.ProjectD[] | null;
+    techStacks: ApiTypes.TechStackD[] | null;
+    techGroups: ApiTypes.TechGroupD[] | null;
+  };
 }

@@ -16,7 +16,7 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#6bbdde' },
   css: [
     '~/assets/scss/app.scss',
   ],
@@ -38,6 +38,9 @@ module.exports = {
         })
       }
     }
+  },
+  router: {
+    middleware: ['loading'],
   },
   modules: [
     'bootstrap-vue/nuxt',

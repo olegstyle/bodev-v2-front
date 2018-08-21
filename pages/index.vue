@@ -1,71 +1,53 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        bodev V2 Frontend
-      </h1>
-      <h2 class="subtitle">
-        BOdev Porfolio on Nuxt.js
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
-    </div>
-  </section>
+  <div>Loading</div>
 </template>
 
 <script lang="ts">
-  import {
-    Component,
-    Vue
-  } from "nuxt-property-decorator"
+  import {Component, Vue, Watch} from "nuxt-property-decorator";
+  import {Action, Getter} from "vuex-class";
+  import {ApiEnums} from '../store/enums/ApiEnums';
+  import Router from "vue-router";
 
-  import AppLogo from '~/components/AppLogo.vue'
+  const ActionEnum = ApiEnums.ActionEnum;
+  const GetterEnum = ApiEnums.GetterEnum;
 
-  @Component({
-    components: {
-      AppLogo
+  const namespace: string = 'api';
+
+  @Component({})
+  export default class Loading extends Vue {
+    $router: Router;
+
+    layout (context) {
+      return 'loading';
     }
-  })
-  export default class Porfolio extends Vue {
+
+    @Getter(GetterEnum.PORTFOLIO_DATA, {namespace}) portfolioData;
+    @Getter(GetterEnum.PROJECTS, {namespace}) projects;
+    @Getter(GetterEnum.TECH_GROUPS, {namespace}) techGroups;
+    @Getter(GetterEnum.TECH_STACKS, {namespace}) techStacks;
+
+    @Action(ActionEnum.PORTFOLIO_DATA, {namespace}) updatePortfolioData;
+    @Action(ActionEnum.PROJECTS, {namespace}) updateProjects;
+    @Action(ActionEnum.TECH_GROUPS, {namespace}) updateTechGroups;
+    @Action(ActionEnum.TECH_STACKS, {namespace}) updateTechStacks;
+
+    @Watch('portfolioData')
+    @Watch('projects')
+    @Watch('techGroups')
+    @Watch('techStacks')
+    onDataChanged() {
+      if (this.portfolioData === null || this.projects === null || this.techGroups === null || this.techStacks === null) {
+        return;
+      }
+
+      this.$router.push('/main');
+    }
+
+    mounted() {
+      this.updatePortfolioData();
+      this.updateProjects();
+      this.updateTechGroups();
+      this.updateTechStacks();
+    }
   }
 </script>
-
-<style>
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: 5px;
-  }
-
-  .title {
-    font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-    display: block;
-    font-weight: 300;
-    font-size: 100px;
-    color: #35495e;
-    letter-spacing: 1px;
-  }
-
-  .subtitle {
-    font-weight: 300;
-    font-size: 42px;
-    color: #526488;
-    word-spacing: 5px;
-    padding-bottom: 15px;
-  }
-
-  .links {
-    padding-top: 15px;
-  }
-</style>

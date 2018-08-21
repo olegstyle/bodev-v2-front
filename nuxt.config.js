@@ -42,5 +42,8 @@ module.exports = {
   modules: [
     'bootstrap-vue/nuxt',
     '@nuxtjs/dotenv',
-  ]
+    "@nuxtjs/axios",
+    "~/modules/typescript.js"
+  ],
+  axios: {}
 };

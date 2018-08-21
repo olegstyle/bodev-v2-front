@@ -16,21 +16,24 @@
   </div>
 </template>
 
-<script>
-  export default {
-    data() {
-      return {
-        lines: {
-          hide_1: true,
-          hide_2: true,
-          hide_3: true,
-          hide_4: true,
-          hide_5: true,
-          hide_6: true,
-        }
-      };
-    },
-    mounted: function() {
+<script lang="ts">
+  import {
+    Component,
+    Vue
+  } from "nuxt-property-decorator"
+
+  @Component({})
+  export default class DefaultLayout extends Vue {
+    lines = {
+      hide_1: true,
+      hide_2: true,
+      hide_3: true,
+      hide_4: true,
+      hide_5: true,
+      hide_6: true,
+    };
+
+    mounted() {
       const self = this;
       self.lines.hide_1 = false;
       self.lines.hide_4 = false;

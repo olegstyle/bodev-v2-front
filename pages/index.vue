@@ -1,19 +1,33 @@
 <template>
-  <div>Loading<span v-html="loadingDots"></span></div>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+    <div style="max-width: 50%; align-self: flex-start;">&nbsp;</div>
+    <div style="max-width: 50%;">
+      <bounce-loader :loading="true" :color="'#6bbdde'" :size="'128px'"></bounce-loader>
+      <div style="margin-top: 15px; text-align: center;">
+        <span style="visibility: hidden" v-html="loadingDots"></span>Loading<span v-html="loadingDots"></span>
+      </div>
+    </div>
+    <div style="max-width: 50%; align-self: flex-end;">&nbsp;</div>
+  </div>
 </template>
 
 <script lang="ts">
   import {Component, Vue, Watch} from "nuxt-property-decorator";
   import {Action, Getter} from "vuex-class";
-  import {ApiEnums} from '../store/enums/ApiEnums';
+  import {ApiEnums} from "../store/enums/ApiEnums";
   import Router from "vue-router";
+  import BounceLoader from "vue-spinner/src/BounceLoader.vue";
 
   const ActionEnum = ApiEnums.ActionEnum;
   const GetterEnum = ApiEnums.GetterEnum;
 
   const namespace: string = 'api';
 
-  @Component({})
+  @Component({
+    components: {
+      BounceLoader
+    }
+  })
   export default class Loading extends Vue {
     $router: Router;
     loadingInterval: any;

@@ -32,8 +32,10 @@
 
     mounted() {
       const self = this;
-      self.lines.hide_1 = false;
-      self.lines.hide_4 = false;
+      setTimeout(function () {
+        self.lines.hide_1 = false;
+        self.lines.hide_4 = false;
+      }, 100);
       setTimeout(function () {
         self.lines.hide_3 = false;
       }, 300);

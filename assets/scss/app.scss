@@ -5,8 +5,9 @@ html, body, #__nuxt, #__layout {
   transition: all 0.5s ease-in;
 }
 
+/* helpers */
 @import "helpers/mixins";
 @import "helpers/variables";
+@import "helpers/aligner";
 /* layouts */
 @import "layouts/default";
-

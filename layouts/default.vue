@@ -17,10 +17,7 @@
 </template>
 
 <script lang="ts">
-  import {
-    Component,
-    Vue
-  } from "nuxt-property-decorator"
+  import {Component, Vue} from "nuxt-property-decorator"
 
   @Component({})
   export default class DefaultLayout extends Vue {
@@ -47,6 +44,12 @@
       setTimeout(function () {
         self.lines.hide_5 = false;
       }, 850)
+    }
+
+    beforeDestroy() {
+      for (const k in this.lines) {
+        this.lines[k] = true;
+      }
     }
   }
 </script>

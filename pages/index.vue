@@ -1,13 +1,10 @@
 <template>
-  <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
-    <div style="max-width: 50%; align-self: flex-start;">&nbsp;</div>
-    <div style="max-width: 50%;">
-      <bounce-loader :loading="true" :color="'#6bbdde'" :size="'128px'"></bounce-loader>
-      <div style="margin-top: 15px; text-align: center;">
-        <span style="visibility: hidden" v-html="loadingDots"></span>Loading<span v-html="loadingDots"></span>
-      </div>
+  <div class="Aligner">
+    <div class="Aligner-item Aligner-item--top">&nbsp;</div>
+    <div class="Aligner-item">
+      <bounce-loader :loading="true" :color="'#6bbdde'" :size="'152px'"></bounce-loader>
     </div>
-    <div style="max-width: 50%; align-self: flex-end;">&nbsp;</div>
+    <div class="Aligner-item Aligner-item--bottom">&nbsp;</div>
   </div>
 </template>
 
@@ -30,8 +27,6 @@
   })
   export default class Loading extends Vue {
     $router: Router;
-    loadingInterval: any;
-    loadingDots: string = '';
 
     layout (context) {
       return 'loading';
@@ -59,27 +54,11 @@
       this.$router.push('/main');
     }
 
-    updateLoadingDots() {
-      const times = ((new Date()).getTime() / 500) % 3;
-      let dots = '';
-      for (let i = 0; i < times; i += 1) {
-        dots += '.';
-      }
-
-      this.loadingDots = dots;
-    }
-
     mounted() {
       this.updatePortfolioData();
       this.updateProjects();
       this.updateTechGroups();
       this.updateTechStacks();
-
-      this.loadingInterval = setInterval(() => this.updateLoadingDots(), 500);
-    }
-
-    beforeDestroy () {
-      clearInterval(this.loadingInterval);
     }
   }
 </script>

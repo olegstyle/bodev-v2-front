@@ -1,5 +1,5 @@
 <template>
-  <div>Loading</div>
+  <div>Loading<span v-html="loadingDots"></span></div>
 </template>
 
 <script lang="ts">
@@ -16,6 +16,8 @@
   @Component({})
   export default class Loading extends Vue {
     $router: Router;
+    loadingInterval: any;
+    loadingDots: string = '';
 
     layout (context) {
       return 'loading';
@@ -43,11 +45,27 @@
       this.$router.push('/main');
     }
 
+    updateLoadingDots() {
+      const times = ((new Date()).getTime() / 500) % 3;
+      let dots = '';
+      for (let i = 0; i < times; i += 1) {
+        dots += '.';
+      }
+
+      this.loadingDots = dots;
+    }
+
     mounted() {
       this.updatePortfolioData();
       this.updateProjects();
       this.updateTechGroups();
       this.updateTechStacks();
+
+      this.loadingInterval = setInterval(() => this.updateLoadingDots(), 500);
+    }
+
+    beforeDestroy () {
+      clearInterval(this.loadingInterval);
     }
   }
 </script>

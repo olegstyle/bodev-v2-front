@@ -36,10 +36,10 @@
   box-shadow: $shadow;
 }
 
-@mixin invisible {
+@mixin transparent-block {
   opacity: 0;
 }
 
-.invisible {
-  @include invisible;
+.transparent-block {
+  @include transparent-block;
 }

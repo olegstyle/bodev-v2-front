@@ -13,6 +13,11 @@
     left: -30%;
     @include skewY(-30deg);
     @include horizontal-gradient($primary-light, $primary-dark, 0%, 75%);
+
+    &.hidden {
+      bottom: 200%;
+      left: -130%;
+    }
   }
 }
 

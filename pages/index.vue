@@ -1,7 +1,7 @@
 <template>
   <div class="Aligner">
     <div class="Aligner-item Aligner-item--top">&nbsp;</div>
-    <div class="Aligner-item" v-bind:class="{invisible: !loading}">
+    <div class="Aligner-item" v-bind:class="{'transparent-block': !loading}">
       <bounce-loader :loading="true" :color="'#6bbdde'" :size="'152px'"></bounce-loader>
     </div>
     <div class="Aligner-item Aligner-item--bottom">&nbsp;</div>

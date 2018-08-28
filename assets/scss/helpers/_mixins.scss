@@ -3,12 +3,20 @@
   border-color: $color !important;
 }
 
+@mixin transform($args) {
+  -moz-transform: $args; /* Для Firefox */
+  -ms-transform: $args; /* Для IE */
+  -webkit-transform: $args; /* Для Safari, Chrome, iOS */
+  -o-transform: $args; /* Для Opera */
+  transform: $args;
+}
+
 @mixin skewY($deg) {
-  -moz-transform: skewY($deg); /* Для Firefox */
-  -ms-transform: skewY($deg); /* Для IE */
-  -webkit-transform: skewY($deg); /* Для Safari, Chrome, iOS */
-  -o-transform: skewY($deg); /* Для Opera */
-  transform: skewY($deg);
+  @include transform(skewY($deg));
+}
+
+@mixin translateY($value) {
+  @include transform(translateY($value));
 }
 
 @mixin horizontal-gradient($from, $to, $start: 0%, $stop: 100%) {
@@ -27,7 +35,24 @@
   /* Standard */
   background: linear-gradient(to right, $from $start, $to $stop);
   /* IE6-9 */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$from', endColorstr='$to', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$from, endColorstr=$to, GradientType=1);
+}
+
+@mixin vertical-gradient($from, $to, $start: 0%, $stop: 100%) {
+  /* fallback/image non-cover color */
+  background-color: $from;
+  /* Firefox 3.6+ */
+  background-image: -moz-linear-gradient(top, $from $start, $to $stop);
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -webkit-linear-gradient(top, $from $start, $to $stop);
+  /* Opera 11.10+ */
+  background-image: -o-linear-gradient(top, $from $start, $to $stop);
+  /* IE10+ */
+  background: -ms-linear-gradient(top, $from $start, $to $stop);
+  /* Standard */
+  background: linear-gradient(to bottom, $from $start, $to $stop);
+  /* IE6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$from, endColorstr=$to, GradientType=1);
 }
 
 @mixin box-shadow($shadow) {

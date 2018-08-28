@@ -1,5 +1,3 @@
-import {Action} from "~/node_modules/vuex-class";
-
 export namespace ApiEnums {
   export enum MutationEnum {
     PORTFOLIO_DATA = 'setPortfolioData',

@@ -35,3 +35,11 @@
   -moz-box-shadow: $shadow;
   box-shadow: $shadow;
 }
+
+@mixin invisible {
+  opacity: 0;
+}
+
+.invisible {
+  @include invisible;
+}

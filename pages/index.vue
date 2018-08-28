@@ -1,7 +1,7 @@
 <template>
   <div class="Aligner">
     <div class="Aligner-item Aligner-item--top">&nbsp;</div>
-    <div class="Aligner-item">
+    <div class="Aligner-item" v-bind:class="{invisible: !loading}">
       <bounce-loader :loading="true" :color="'#6bbdde'" :size="'152px'"></bounce-loader>
     </div>
     <div class="Aligner-item Aligner-item--bottom">&nbsp;</div>
@@ -27,6 +27,7 @@
   })
   export default class Loading extends Vue {
     $router: Router;
+    loading: boolean = true;
 
     layout (context) {
       return 'loading';
@@ -51,10 +52,15 @@
         return;
       }
 
-      this.$router.push('/main');
+      this.loading = false;
+      const self = this;
+      setTimeout(function () {
+        self.$router.push('/main');
+      }, 500);
     }
 
     mounted() {
+      this.loading = true;
       this.updatePortfolioData();
       this.updateProjects();
       this.updateTechGroups();

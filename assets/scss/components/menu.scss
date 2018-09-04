@@ -1,0 +1,33 @@
+.menu-wrapper {
+  .navbar-nav {
+    border-bottom: 1px solid $divider;
+  }
+
+  .collapse {
+    position: relative;
+  }
+
+  .nav-link-line {
+    width: 50%;
+    height: 3px;
+    background: $primary;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+  }
+
+  .nav-link {
+    color: $text;
+    font-size: 14px;
+    transition: all 0.5s;
+
+    &.active {
+      color: $primary;
+      font-weight: bold;
+    }
+
+    &:hover {
+      color: $primary-dark;
+    }
+  }
+}

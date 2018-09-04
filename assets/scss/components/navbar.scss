@@ -1,0 +1,12 @@
+.navbar {
+  @import "menu";
+
+  display: flex;
+  justify-content: space-between;
+
+  .title {
+    color: $title;
+    font-size: 24px;
+    font-weight: bold;
+  }
+}

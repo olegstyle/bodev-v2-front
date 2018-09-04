@@ -3,7 +3,7 @@
     <div class="container-with-sidebar">
       <Sidebar :imageUrl="'/me.jpg'" />
       <div class="content">
-        Content
+        <Navbar />
       </div>
     </div>
   </section>
@@ -15,10 +15,12 @@
   import {Getter} from "vuex-class";
   import {ApiEnums} from "../../store/enums/ApiEnums";
   import {ApiTypes} from '../../app/types/api';
+  import Navbar from "../../components/navbar";
   const GetterEnum = ApiEnums.GetterEnum;
 
   @Component({
     components: {
+      Navbar,
       Sidebar
     }
   })

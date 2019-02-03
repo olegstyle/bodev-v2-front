@@ -2,12 +2,12 @@
   <div class="background">
     <div class="background-left-part" v-bind:class="{'hidden': !leftPartShowed}"></div>
     <div class="app-container-wrapper" v-bind:class="{'transparent-block': !containerShowed}">
-      <div v-bind:class="{hidden: lines.hide_1}" class="line line-type-2 line-position-left"></div>
-      <div v-bind:class="{hidden: lines.hide_2}" class="line line-type-2 line-position-left-top"></div>
-      <div v-bind:class="{hidden: lines.hide_3}" class="line line-type-3 line-position-right-top"></div>
-      <div v-bind:class="{hidden: lines.hide_4}" class="line line-type-2 reverted line-position-right"></div>
-      <div v-bind:class="{hidden: lines.hide_5}" class="line line-type-1 line-position-right-bottom"></div>
-      <div v-bind:class="{hidden: lines.hide_6}" class="line line-type-2 reverted line-position-left-bottom"></div>
+      <div v-bind:class="{hidden: lines[1].hide}" class="line line-type-2 line-position-left"></div>
+      <div v-bind:class="{hidden: lines[2].hide}" class="line line-type-2 line-position-left-top"></div>
+      <div v-bind:class="{hidden: lines[3].hide}" class="line line-type-3 line-position-right-top"></div>
+      <div v-bind:class="{hidden: lines[4].hide}" class="line line-type-2 reverted line-position-right"></div>
+      <div v-bind:class="{hidden: lines[5].hide}" class="line line-type-1 line-position-right-bottom"></div>
+      <div v-bind:class="{hidden: lines[6].hide}" class="line line-type-2 reverted line-position-left-bottom"></div>
 
       <div class="app-container">
         <nuxt/>
@@ -21,14 +21,36 @@
 
   @Component({})
   export default class DefaultLayout extends Vue {
-    lines = {
-      hide_1: true,
-      hide_2: true,
-      hide_3: true,
-      hide_4: true,
-      hide_5: true,
-      hide_6: true,
-    };
+    lines = [
+      { // 0 not used
+        hide: true,
+        position: 0,
+      },
+      {
+        hide: true,
+        position: 0,
+      },
+      {
+        hide: true,
+        position: 0,
+      },
+      {
+        hide: true,
+        position: 0,
+      },
+      {
+        hide: true,
+        position: 0,
+      },
+      {
+        hide: true,
+        position: 0,
+      },
+      {
+        hide: true,
+        position: 0,
+      },
+    ];
     containerShowed = false;
     leftPartShowed = false;
 
@@ -40,28 +62,29 @@
       }, interval += 100);
       setTimeout(function () {
         self.containerShowed = true;
-      }, interval += 400);
+      }, interval += 200);
       setTimeout(function () {
-        self.lines.hide_1 = false;
-        self.lines.hide_4 = false;
-      }, interval += 300);
+        self.lines[0].hide = false;
+        self.lines[4].hide = false;
+      }, interval += 250);
       setTimeout(function () {
-        self.lines.hide_3 = false;
-      }, interval += 300);
+        self.lines[3].hide = false;
+      }, interval += 250);
       setTimeout(function () {
-        self.lines.hide_2 = false;
-        self.lines.hide_6 = false;
-      }, interval += 300);
+        self.lines[2].hide = false;
+        self.lines[6].hide = false;
+      }, interval += 250);
       setTimeout(function () {
-        self.lines.hide_5 = false;
-      }, interval += 150);
+        self.lines[5].hide = false;
+      }, interval += 100);
     }
 
     beforeDestroy() {
       this.containerShowed = false;
       this.leftPartShowed = false;
       for (const k in this.lines) {
-        this.lines[k] = true;
+        this.lines[k].hide = true;
+        this.lines[k].position = 0;
       }
     }
   }

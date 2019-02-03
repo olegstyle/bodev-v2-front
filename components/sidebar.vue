@@ -25,11 +25,11 @@
       const self = this;
       setTimeout(function() {
         self.sidebarShowed = true;
-      }, 3000);
+      }, 1500);
 
       setTimeout(function() {
         self.imageShowed = true;
-      }, 4000);
+      }, 2000);
     }
   }
 </script>

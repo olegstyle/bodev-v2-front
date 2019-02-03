@@ -7,16 +7,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="navbar-item" v-for="(item, index) in menuList" :key="index">
-          <a class="nav-link"
+          <nuxt-link class="nav-link"
              v-bind:class="{active: item.active}"
-             v-on:mouseover="linkOver"
-             v-on:mouseleave="linkLeave"
-             href="#">
+             v-on:mouseover.native="linkOver"
+             v-on:mouseleave.native="linkLeave"
+             v-on:click.native="linkClicked"
+             :to="item.link">
             {{ item.label }}
-          </a>
+          </nuxt-link>
         </li>
       </ul>
-      <div class="nav-link-line"></div>
+      <div class="nav-link-line" v-bind:style="{width: lineWidth + 'px', left: lineLeft + 'px'}"></div>
     </div>
   </div>
 </template>
@@ -26,28 +27,62 @@
 
   @Component({})
   export default class Menu extends Vue {
+    lineWidth = 100;
+    lineLeft = 0;
     menuList = [
       {
         'label': 'About Me',
-        'active': true
+        'link': '/main',
+        'active': true,
       },
       {
         'label': 'Skills',
+        'link': '/skills',
+        'active': false,
       },
       {
         'label': 'Projects',
+        'link': '/projects',
+        'active': false,
       },
       {
         'label': 'Contacts',
+        'link': '/contacts',
+        'active': false,
       },
     ];
 
-    linkOver(event) {
-      console.log('over', event);
+    mounted() {
+      this.setLineToActiveTarget();
     }
 
-    linkLeave(event) {
-      console.log('leave', event);
+    setLineToActiveTarget() {
+      this.setLineTarget(this.$el.querySelector('.nav-link.active'));
+    }
+
+    setLineTarget(target) {
+      this.lineWidth = target.clientWidth;
+      this.lineLeft = target.offsetLeft;
+    }
+
+    linkOver(event) {
+      this.setLineTarget(event.target);
+    }
+
+    linkLeave() {
+      this.setLineToActiveTarget();
+    }
+
+    linkClicked(event) {
+      const parent = event.target.parentElement;
+      this.setActiveItem(Array.prototype.indexOf.call(parent.parentNode.childNodes, parent));
+    }
+
+    setActiveItem(index) {
+      for (const i in this.menuList) {
+        this.menuList[i].active = (index == i);
+      }
+      this.setLineToActiveTarget();
     }
   }
 </script>
